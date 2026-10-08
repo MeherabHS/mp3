@@ -1,0 +1,15 @@
+# Android cross-compilation config for cargo-ndk.
+# cargo-ndk reads NDK_HOME / ANDROID_NDK_HOME automatically.
+# These targets are needed for:
+#   arm64-v8a  → aarch64-linux-android   (most modern Android phones)
+#   armeabi-v7a → armv7-linux-androideabi (32-bit fallback)
+#   x86_64     → x86_64-linux-android    (Android emulator)
+
+[target.aarch64-linux-android]
+linker = "aarch64-linux-android-clang"
+
+[target.armv7-linux-androideabi]
+linker = "armv7-linux-androideabi-clang"
+
+[target.x86_64-linux-android]
+linker = "x86_64-linux-android-clang"

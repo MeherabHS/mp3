@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Expanded notification content view for Personal Hi-Fi.
+  The composite bitmap (album art + waveform) is set programmatically
+  on notif_composite. Controls are injected by MediaStyle on top.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:background="#FF050510">
+
+    <!-- Full-bleed composite image: album art + waveform bars + track text -->
+    <ImageView
+        android:id="@+id/notif_composite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@null" />
+
+    <!--
+      Subtle left-side gradient so the notification action icons (from
+      MediaStyle compact view) don't clash with the artwork on older Android.
+    -->
+    <View
+        android:layout_width="72dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="@drawable/notif_end_gradient" />
+
+</FrameLayout>
