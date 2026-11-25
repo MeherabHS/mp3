@@ -1,10 +1,10 @@
-# Hi-Fi MP3 & Music Player
+# Hi-Fi Music Player
 
 A modern, high-performance music player built with **Flutter** for a sleek, responsive UI and **Rust (`rust_core`)** for the native backend engine.
 
 ---
 
-## 🚀 Features
+## Features
 
 - **High-Performance Audio Pipeline:** Native Rust core handling audio indexing, queue management, and metadata extraction.
 - **Synced Lyrics:** Real-time lyric synchronization with caching and multi-source parsing.
@@ -16,7 +16,21 @@ A modern, high-performance music player built with **Flutter** for a sleek, resp
 
 ---
 
-## 📁 Repository Structure
+## Architecture
+
+- **Flutter UI** (`flutter_app/lib`): screens per feature, Riverpod providers for player, library, lyrics, output and settings state.
+- **Rust core** (`rust_core`): library scanning and metadata parsing, SQLite storage, queue management, synced-lyrics parsing and caching, artwork cache, and the download pipeline. Compiled to `librust_core.so` for Android and called from Dart through FFI (`lib/bridge/rust_bridge.dart`).
+- **Android host** (Kotlin): ExoPlayer-based `PlaybackService`, the custom media notification with a waveform, and audio-output (DAC) detection, reached from Dart through platform channels.
+
+---
+
+## Project status
+
+Work in progress. Open items are tracked in [`TODO.md`](TODO.md), including wiring shuffle and repeat through to ExoPlayer and indexing downloaded tracks into the library automatically.
+
+---
+
+## Repository structure
 
 ```
 mp3/
@@ -43,7 +57,7 @@ mp3/
 
 ---
 
-## 🛠️ Getting Started
+## Getting started
 
 ### Prerequisites
 
@@ -74,6 +88,6 @@ flutter run
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
